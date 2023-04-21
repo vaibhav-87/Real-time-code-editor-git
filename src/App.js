@@ -2,8 +2,11 @@ import "./App.css"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Toaster } from 'react-hot-toast';
 import RoomHome from './pages/RoomHome';
-import Home from './Home';
+import TempHome from './TempHome';
 import EditorPage from './pages/EditorPage';
+import HomePage from "./HomePage";
+
+// TempHome will redirect on /room page use it in Homepage page
 
 function App() {
     return (
@@ -23,7 +26,7 @@ function App() {
 
             <BrowserRouter>
                 <Routes>
-                    <Route path='/' element={<Home/>} ></Route>
+                    <Route path='/' element={<HomePage/>} ></Route>
                     <Route path="/room" element={<RoomHome />}></Route>
                     <Route
                         path="/editor/:roomId"
@@ -31,8 +34,9 @@ function App() {
                     ></Route>
                 </Routes>
             </BrowserRouter>
+
         </>
     );
-}
+};
 
 export default App;
