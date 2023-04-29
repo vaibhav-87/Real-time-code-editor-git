@@ -13,9 +13,11 @@ const Navbar = () => {
                         <li>More</li>
                     </ul>
                 </div>
-                <div class="signUp">
-                    <button class="nav_btn">Sign-up</button>
-                </div>
+                <form action="/room" method="POST">
+                    <div class="signUp">
+                        <button class="nav_btn">Register</button>
+                    </div>
+                </form>
             </div>
         </>
     );

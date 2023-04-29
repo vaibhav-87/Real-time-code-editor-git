@@ -33,6 +33,10 @@
     color: white;
 }
 
+.signUp .nav_btn:hover{
+    cursor: pointer;
+}
+
 
 .border{
     background-color: #DAE1DE;
