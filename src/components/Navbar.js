@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from 'react-router-dom';
+
 
 const Navbar = () => {
     return (
@@ -15,7 +17,7 @@ const Navbar = () => {
                 </div>
                 <form action="/room" method="POST">
                     <div class="signUp">
-                        <button class="nav_btn">Register</button>
+                        <Link class="nav_btn" to="/createuser" >Register</Link>
                     </div>
                 </form>
             </div>
