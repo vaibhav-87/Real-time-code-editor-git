@@ -4,13 +4,25 @@ const http = require('http');
 const path = require('path');
 const { Server } = require('socket.io');
 const ACTIONS = require('./src/Actions');
+const mongoDB = require("./db");
+mongoDB();
 
 const server = http.createServer(app);
 const io = new Server(server);
 
-app.get("/temphtml",(req, res)=>{
-    res.sendFile(__dirname+"/src/temphtml.html")
+app.use((req, res, next)=>{
+    res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+    res.header(
+        "Access-Control-Allow-Headers",
+        "Origin, X-Requested-With, Content-Type, Accept"
+    );
+    next();
 })
+
+app.use(express.json())
+app.use('/api', require("./src/components/CreateUser"));
+// app.use('/api', require("./Routes/DisplayData"));
+
 
 app.use(express.static('build'));
 app.use((req, res, next) => {
@@ -19,7 +31,7 @@ app.use((req, res, next) => {
 
 const userSocketMap = {};
 function getAllConnectedClients(roomId) {
-    // Map
+
     return Array.from(io.sockets.adapter.rooms.get(roomId) || []).map(
         (socketId) => {
             return {
